@@ -43,9 +43,7 @@ public class FullscreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fullscreen);
 
         mVisible = true;
-        mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
-        mControlsView2 = findViewById(R.id.fullscreen_content_controls2);
 
 
         // Set up the user interaction to manually show or hide the system UI.
@@ -101,8 +99,8 @@ public class FullscreenActivity extends AppCompatActivity {
 
     private void hide() {
         // Hide UI first
-        mControlsView.setVisibility(View.GONE);
-        mControlsView2.setVisibility(View.GONE);
+        //mControlsView.setVisibility(View.GONE);
+        //mControlsView2.setVisibility(View.GONE);
         mVisible = false;
 
         // Schedule a runnable to remove the status and navigation bar after a delay
@@ -144,8 +142,8 @@ public class FullscreenActivity extends AppCompatActivity {
         @Override
         public void run() {
             // Delayed display of UI elements
-            mControlsView.setVisibility(View.VISIBLE);
-            mControlsView2.setVisibility(View.VISIBLE);
+            //mControlsView.setVisibility(View.VISIBLE);
+            //mControlsView2.setVisibility(View.VISIBLE);
         }
     };
 
