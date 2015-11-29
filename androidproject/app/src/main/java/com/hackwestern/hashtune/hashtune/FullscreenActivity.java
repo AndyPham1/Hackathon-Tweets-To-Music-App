@@ -1,5 +1,6 @@
 package com.hackwestern.hashtune.hashtune;
 
+import android.support.annotation.IdRes;
 import android.support.v7.app.ActionBarActivity;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -11,6 +12,8 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Button;
+
 
 import com.example.androidaudiovisualizer.VisualizerView;
 
@@ -36,6 +39,11 @@ public class FullscreenActivity extends AppCompatActivity {
      * and a change of the status and navigation bar.
      */
     private static final int UI_ANIMATION_DELAY = 300;
+
+    private Button button;
+    private EditText query;
+    private int[] infoArray = new int[3];
+    private String text;
 
     private View mContentView;
     private View mControlsView;
@@ -69,12 +77,14 @@ public class FullscreenActivity extends AppCompatActivity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
 
-        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+        button = (Button) findViewById(R.id.dummy_button);
+        button.setOnTouchListener(mDelayHideTouchListener);
+        query = (EditText) findViewById(R.id.editText);
 
         //EXTRA
         findViewById(R.id.editText).setOnTouchListener(mDelayHideTouchListener);
         mVisualizerView = (VisualizerView) findViewById(R.id.myvisualizerview);
-        initAudio();
+        //initAudio();
     }
 
     @Override
@@ -183,11 +193,36 @@ public class FullscreenActivity extends AppCompatActivity {
     public void getInput(View view) {
         EditText input = (EditText) findViewById(R.id.editText);
         input.getText().toString();
-        String hashtag = input.getText().toString();
+        text = input.getText().toString();
 
         // Do something in response to button click
     }
 
+    public int[] parameterize(String text) {
+        int length = text.length();
+
+        int sumValue = 0;
+        for(int i = 0; i < length; i++){
+            sumValue += text.charAt(i);
+        }
+
+        int positionValue = 0;
+        for(int i = 0; i < length; i++){
+            positionValue += i * text.charAt((text.length()-1) - i);
+        }
+        positionValue %= 80;
+
+        return new int[]{length, sumValue, positionValue};
+    }
+
+    public void buttonOnClick(View view){
+        getInput(query);
+        infoArray = parameterize(text);
+        EditXML editXML = new EditXML();
+        editXML.makeChanges(infoArray[0], infoArray[1], infoArray[2]);
+        SoundHelixPlay soundHelixPlay = new SoundHelixPlay();
+        soundHelixPlay.play(text);
+    }
 
     @Override
     protected void onPause() {
@@ -199,7 +234,7 @@ public class FullscreenActivity extends AppCompatActivity {
         }
     }
 
-    private void initAudio() {
+    /*private void initAudio() {
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
         mMediaPlayer = MediaPlayer.create(this, R.raw.test);
 
@@ -221,7 +256,7 @@ public class FullscreenActivity extends AppCompatActivity {
                 });
         mMediaPlayer.start();
 
-    }
+    }*/
 
     private void setupVisualizerFxAndUI() {
 

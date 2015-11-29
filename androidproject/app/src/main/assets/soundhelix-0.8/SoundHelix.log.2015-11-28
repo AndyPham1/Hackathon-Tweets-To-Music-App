@@ -1,0 +1,22 @@
+2015-11-28 22:02:45,594 INFO  [main     ] VersionUtils                  : SoundHelix 0.8 (r799), built on 2015-04-28 *** http://www.soundhelix.com
+2015-11-28 22:02:45,610 INFO  [Generator] SongUtils                     : Loading XML data from URL "file:/C:/Users/David_2/Documents/HackWestern/hackWestern/soundhelix-0.8/examples/SoundHelix-Popcorn.xml"
+2015-11-28 22:02:45,694 INFO  [Generator] SongUtils                     : Song name: "The constipated cow"
+2015-11-28 22:02:45,741 INFO  [Generator] PatternHarmonyEngine          : Using harmony pattern +Am/8,F/4,Dm/4,Am/8,Em/4,C/4
+2015-11-28 22:02:47,759 INFO  [Generator] ActivityMatrix                : Song's activity matrix:
+ Section #: 0123
+=======================
+base_snare: **** 100.0%
+      clap: --**  50.0%
+     hihat: -***  75.0%
+    melody: ----
+    chords: ----
+    accomp: ----
+      bass: **** 100.0%
+    string: **** 100.0%
+       pad: ***-  75.0%
+  arpeggio: ----
+   melody2: ----
+=======================
+  # active: 4565
+2015-11-28 22:02:48,676 INFO  [main     ] MidiPlayer                    : Song length: 1536 ticks (125 seconds @ 61.0 BPM)
+2015-11-28 22:02:48,679 INFO  [main     ] MidiPlayer                    : Tick:     0   Chord section:   0   Seconds:    0   Progress:   0.0 %

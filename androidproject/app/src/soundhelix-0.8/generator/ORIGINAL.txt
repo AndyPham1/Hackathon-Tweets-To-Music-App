@@ -1,0 +1,30 @@
+Variable ideas:
+
+program number
+total length
+bpm (if bpm high shorten bar number)
+key
+program
+groove
+
+base_snare
+clap
+hihat
+melody
+chords
+accomp
+bass
+string
+pad
+arpeggio
+melody2
+
+percussion (base, snare, clap, close hihat, open hihat)
+melody		1
+chords		1
+accomp		1
+bass		36
+string		41
+pad		83
+arpeggio	9
+melody2		25
